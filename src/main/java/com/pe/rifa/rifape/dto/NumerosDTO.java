@@ -12,13 +12,15 @@ import lombok.Setter;
 @Setter
 public class NumerosDTO {
 
-	private Long numero;
+	private String numero;
 	
 	private TipoStatus status;
 	
 	private Date dtReserva;
 
 	private CompradorDTO comprador;
+	
+	public NumerosDTO() {};
 	
 	public NumerosDTO(Numeros numeros) {
 		this.numero = numeros.getNumero();

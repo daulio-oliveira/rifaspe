@@ -15,6 +15,8 @@ public class CompradorDTO {
 	
 	private String telefone;
 	
+	public CompradorDTO() {};
+	
 	public CompradorDTO(Comprador comprador) {
 		this.cpf = comprador.getCpf();
 		this.nome = comprador.getNome();
