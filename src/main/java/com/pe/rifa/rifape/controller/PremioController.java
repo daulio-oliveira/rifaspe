@@ -19,7 +19,7 @@ import com.pe.rifa.rifape.dto.PremioDTO;
 import com.pe.rifa.rifape.service.PremioService;
 
 @RestController()
-@RequestMapping("/premmio")
+@RequestMapping("/premio")
 public class PremioController {
 
 	@Autowired private PremioService service;
