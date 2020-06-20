@@ -19,6 +19,8 @@ import lombok.Setter;
 public class Numeros {
 	
 	@Id
+	private Long id;
+	
 	private String numero;
 	
 	private String status;

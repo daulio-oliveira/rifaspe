@@ -12,6 +12,8 @@ import lombok.Setter;
 @Setter
 public class NumerosDTO {
 
+	private Long id;
+	
 	private String numero;
 	
 	private TipoStatus status;
@@ -23,6 +25,7 @@ public class NumerosDTO {
 	public NumerosDTO() {};
 	
 	public NumerosDTO(Numeros numeros) {
+		this.id = numeros.getId();
 		this.numero = numeros.getNumero();
 		this.status = numeros.getStatus().isEmpty()?TipoStatus.LIVRE:TipoStatus.getByValue(numeros.getStatus());
 		this.dtReserva = numeros.getDtReserva();
@@ -31,6 +34,7 @@ public class NumerosDTO {
 	
 	public Numeros toEntity() {
 		Numeros numeros = new Numeros();
+		numeros.setId(this.id);
 		numeros.setNumero(this.numero);
 		numeros.setStatus(this.status.toString());
 		numeros.setDtReserva(this.dtReserva);

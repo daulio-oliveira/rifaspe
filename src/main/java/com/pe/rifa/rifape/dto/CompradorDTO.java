@@ -18,6 +18,7 @@ public class CompradorDTO {
 	public CompradorDTO() {};
 	
 	public CompradorDTO(Comprador comprador) {
+		
 		this.cpf = comprador.getCpf();
 		this.nome = comprador.getNome();
 		this.telefone = comprador.getTelefone();

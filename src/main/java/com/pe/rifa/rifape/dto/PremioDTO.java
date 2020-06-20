@@ -14,7 +14,7 @@ import lombok.Setter;
 @Setter
 public class PremioDTO {
 
-private Long id;
+	private Long id;
 	
 	private String descricao;
 	
@@ -31,6 +31,7 @@ private Long id;
 	private List<NumerosDTO> numeros;
 	
 	public PremioDTO(Premio premio) {
+		
 		this.descricao = premio.getDescricao();
 		this.nuPremio = premio.getNuPremio();
 		this.detalhe1 = premio.getDetalhe1();
@@ -45,6 +46,7 @@ private Long id;
 	}
 	
 	public Premio toEntity() {
+		
 		Premio premio = new Premio();
 		premio.setDescricao(descricao);
 		premio.setDetalhe1(detalhe1);
