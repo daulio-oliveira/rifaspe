@@ -1,5 +1,6 @@
 package com.pe.rifa.rifape.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.pe.rifa.rifape.model.Comprador;
 
 import lombok.Getter;
@@ -7,6 +8,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class CompradorDTO {
 
 	private String cpf;

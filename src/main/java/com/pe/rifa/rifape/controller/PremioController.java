@@ -25,6 +25,7 @@ public class PremioController {
 
 	@Autowired private PremioService service;
 	
+	//Salva premio
 	@PostMapping(value = "/", consumes = { MediaType.APPLICATION_JSON_VALUE}, produces = { MediaType.APPLICATION_JSON_VALUE})
 	public ResponseEntity<?> salvarPremio(@RequestBody @Valid PremioDTO dto) 
 			throws Exception {
@@ -33,6 +34,7 @@ public class PremioController {
 		return new ResponseEntity<>(premioDTO, HttpStatus.CREATED);
 	}
 	
+	//Lista todos os prêmios
 	@GetMapping(produces = { MediaType.APPLICATION_JSON_VALUE })
 	public ResponseEntity<List<PremioDTO>> getListarTodos(){
 		List<PremioDTO> premiosDTO = service.findAllPremios();
@@ -40,6 +42,7 @@ public class PremioController {
 		return new ResponseEntity<>(premiosDTO, HttpStatus.OK);
 	}
 	
+	//Busca Premios por ID
 	@GetMapping(value = "/{id}", produces = { MediaType.APPLICATION_JSON_VALUE })
 	public ResponseEntity<PremioDTO> findByIdPremio(@PathVariable Long id) {
 		
@@ -47,6 +50,7 @@ public class PremioController {
 		return new ResponseEntity<>(find, HttpStatus.OK);
 	}
 	
+	//Lista todos os prêmios que tem ganhadores
 	@GetMapping(value = "/premiosComGanhadores", produces = { MediaType.APPLICATION_JSON_VALUE })
 	public ResponseEntity<List<PremioSemCartelaDTO>> getListarPremiosComGanhadores(){
 		List<PremioSemCartelaDTO> premiosDTO = service.getPremiosComGanhadores();
@@ -54,6 +58,7 @@ public class PremioController {
 		return new ResponseEntity<>(premiosDTO, HttpStatus.OK);
 	}
 	
+	//Lista prêmios com números soteados sem ganhadores
 	@GetMapping(value = "/premiosSemGanhadores", produces = { MediaType.APPLICATION_JSON_VALUE })
 	public ResponseEntity<List<PremioSemCartelaDTO>> getPremioSorteadosSemGanhadores(){
 		List<PremioSemCartelaDTO> premiosDTO = service.getPremioSorteadosSemGanhadores();

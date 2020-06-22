@@ -2,6 +2,7 @@ package com.pe.rifa.rifape.dto;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.pe.rifa.rifape.model.Numeros;
 import com.pe.rifa.rifape.model.enums.TipoStatus;
 
@@ -10,6 +11,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class NumerosDTO {
 
 	private Long id;

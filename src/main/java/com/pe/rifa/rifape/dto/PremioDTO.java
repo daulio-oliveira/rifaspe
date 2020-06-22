@@ -7,6 +7,7 @@ import java.util.List;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.pe.rifa.rifape.model.Numeros;
 import com.pe.rifa.rifape.model.Premio;
 
@@ -15,6 +16,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class PremioDTO {
 
 	private Long id;
