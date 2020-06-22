@@ -30,6 +30,10 @@ public class PremioDTO {
 	
 	private List<NumerosDTO> numeros;
 	
+	private String numeroSorteado;
+	
+	private String cpfGanhador;
+	
 	public PremioDTO(Premio premio) {
 		
 		this.descricao = premio.getDescricao();
@@ -43,6 +47,8 @@ public class PremioDTO {
 			NumerosDTO numDto = new NumerosDTO(num);
 			this.numeros.add(numDto);
 		}
+		this.numeroSorteado = premio.getNumeroSorteado();
+		this.cpfGanhador = premio.getCpfGanhador();
 	}
 	
 	public Premio toEntity() {
@@ -62,6 +68,8 @@ public class PremioDTO {
 		}
 		
 		premio.setNumeros(nums);
+		premio.setNumeroSorteado(numeroSorteado);
+		premio.setCpfGanhador(cpfGanhador);
 		
 		return premio;
 	}

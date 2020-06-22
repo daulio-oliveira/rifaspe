@@ -42,5 +42,9 @@ public class Premio {
 	@OneToMany(mappedBy = "numero", fetch = FetchType.EAGER)
 	private List<Numeros> numeros;
 	
+	private String numeroSorteado;
+	
+	private String cpfGanhador;
+	
 
 }
