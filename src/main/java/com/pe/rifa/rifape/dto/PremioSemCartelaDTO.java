@@ -1,13 +1,10 @@
 package com.pe.rifa.rifape.dto;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import com.pe.rifa.rifape.model.Numeros;
 import com.pe.rifa.rifape.model.Premio;
 
 import lombok.Getter;
@@ -15,7 +12,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class PremioDTO {
+public class PremioSemCartelaDTO {
 
 	private Long id;
 	
@@ -32,10 +29,11 @@ public class PremioDTO {
 	
 	private Double valor;
 	
-	private List<NumerosDTO> numeros;
-
+	private String numeroSorteado;
 	
-	public PremioDTO(Premio premio) {
+	private String cpfGanhador;
+	
+	public PremioSemCartelaDTO(Premio premio) {
 		
 		this.descricao = premio.getDescricao();
 		this.nuPremio = premio.getNuPremio();
@@ -43,11 +41,8 @@ public class PremioDTO {
 		this.detalhe2 = premio.getDetalhe2();
 		this.dtSorteio = premio.getDtSorteio();
 		this.valor = premio.getValor();
-		this.numeros = new ArrayList<NumerosDTO>();
-		for (Numeros num : premio.getNumeros()) {
-			NumerosDTO numDto = new NumerosDTO(num);
-			this.numeros.add(numDto);
-		}
+		this.numeroSorteado = premio.getNumeroSorteado();
+		this.cpfGanhador = premio.getCpfGanhador();
 	}
 	
 	public Premio toEntity() {
@@ -60,13 +55,8 @@ public class PremioDTO {
 		premio.setId(id);
 		premio.setNuPremio(nuPremio);
 		premio.setValor(valor);
-		List<Numeros> nums = new ArrayList<Numeros>();
-		for (NumerosDTO numerosDTO : numeros) {
-			Numeros num = numerosDTO.toEntity();
-			nums.add(num);
-		}
-		
-		premio.setNumeros(nums);
+		premio.setNumeroSorteado(numeroSorteado);
+		premio.setCpfGanhador(cpfGanhador);
 		
 		return premio;
 	}

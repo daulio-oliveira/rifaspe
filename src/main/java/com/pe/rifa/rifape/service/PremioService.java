@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.pe.rifa.rifape.dto.CompradorDTO;
 import com.pe.rifa.rifape.dto.NumerosDTO;
 import com.pe.rifa.rifape.dto.PremioDTO;
+import com.pe.rifa.rifape.dto.PremioSemCartelaDTO;
 import com.pe.rifa.rifape.model.Premio;
 import com.pe.rifa.rifape.model.enums.TipoStatus;
 import com.pe.rifa.rifape.repository.PremioRepository;
@@ -58,6 +59,26 @@ public class PremioService {
 		}
 		
 		return numeros;
+	}
+	
+	public List<PremioSemCartelaDTO> getPremiosComGanhadores(){
+		List<Premio> premioComGanhadores = premioRepository.findByCpfGanhadorIsNotNull();
+		List<PremioSemCartelaDTO> ganhadores =  new ArrayList<PremioSemCartelaDTO>();
+		for (Premio premio : premioComGanhadores) {
+			ganhadores.add(new PremioSemCartelaDTO(premio));
+		}
+		
+		return ganhadores;
+	}
+	
+	public List<PremioSemCartelaDTO> getPremioSorteadosSemGanhadores(){
+		List<Premio> premioSemGanhadores = premioRepository.findByNumeroSorteadoIsNotNullAndCpfGanhadorIsNull();
+		List<PremioSemCartelaDTO> premios =  new ArrayList<PremioSemCartelaDTO>();
+		for (Premio premio : premioSemGanhadores) {
+			premios.add(new PremioSemCartelaDTO(premio));
+		}
+		
+		return premios;
 	}
 
 }

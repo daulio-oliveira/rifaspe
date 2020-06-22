@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.pe.rifa.rifape.dto.PremioDTO;
+import com.pe.rifa.rifape.dto.PremioSemCartelaDTO;
 import com.pe.rifa.rifape.service.PremioService;
 
 @RestController()
@@ -44,5 +45,19 @@ public class PremioController {
 		
 		PremioDTO find = service.findByIdPremio(id);
 		return new ResponseEntity<>(find, HttpStatus.OK);
+	}
+	
+	@GetMapping(value = "/premiosComGanhadores", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public ResponseEntity<List<PremioSemCartelaDTO>> getListarPremiosComGanhadores(){
+		List<PremioSemCartelaDTO> premiosDTO = service.getPremiosComGanhadores();
+		
+		return new ResponseEntity<>(premiosDTO, HttpStatus.OK);
+	}
+	
+	@GetMapping(value = "/premiosSemGanhadores", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public ResponseEntity<List<PremioSemCartelaDTO>> getPremioSorteadosSemGanhadores(){
+		List<PremioSemCartelaDTO> premiosDTO = service.getPremioSorteadosSemGanhadores();
+		
+		return new ResponseEntity<>(premiosDTO, HttpStatus.OK);
 	}
 }
