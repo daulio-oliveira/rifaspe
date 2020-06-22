@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.pe.rifa.rifape.dto.PremioDTO;
 import com.pe.rifa.rifape.dto.PremioSemCartelaDTO;
+import com.pe.rifa.rifape.exception.ApiException;
 import com.pe.rifa.rifape.service.PremioService;
 
 @RestController()
@@ -36,7 +37,7 @@ public class PremioController {
 	
 	//Lista todos os prêmios
 	@GetMapping(produces = { MediaType.APPLICATION_JSON_VALUE })
-	public ResponseEntity<List<PremioDTO>> getListarTodos(){
+	public ResponseEntity<List<PremioDTO>> getListarTodos() throws ApiException{
 		List<PremioDTO> premiosDTO = service.findAllPremios();
 		
 		return new ResponseEntity<>(premiosDTO, HttpStatus.OK);
@@ -44,7 +45,7 @@ public class PremioController {
 	
 	//Busca Premios por ID
 	@GetMapping(value = "/{id}", produces = { MediaType.APPLICATION_JSON_VALUE })
-	public ResponseEntity<PremioDTO> findByIdPremio(@PathVariable Long id) {
+	public ResponseEntity<PremioDTO> findByIdPremio(@PathVariable Long id) throws ApiException {
 		
 		PremioDTO find = service.findByIdPremio(id);
 		return new ResponseEntity<>(find, HttpStatus.OK);
@@ -52,7 +53,7 @@ public class PremioController {
 	
 	//Lista todos os prêmios que tem ganhadores
 	@GetMapping(value = "/premiosComGanhadores", produces = { MediaType.APPLICATION_JSON_VALUE })
-	public ResponseEntity<List<PremioSemCartelaDTO>> getListarPremiosComGanhadores(){
+	public ResponseEntity<List<PremioSemCartelaDTO>> getListarPremiosComGanhadores() throws ApiException{
 		List<PremioSemCartelaDTO> premiosDTO = service.getPremiosComGanhadores();
 		
 		return new ResponseEntity<>(premiosDTO, HttpStatus.OK);
@@ -60,7 +61,7 @@ public class PremioController {
 	
 	//Lista prêmios com números soteados sem ganhadores
 	@GetMapping(value = "/premiosSemGanhadores", produces = { MediaType.APPLICATION_JSON_VALUE })
-	public ResponseEntity<List<PremioSemCartelaDTO>> getPremioSorteadosSemGanhadores(){
+	public ResponseEntity<List<PremioSemCartelaDTO>> getPremioSorteadosSemGanhadores() throws ApiException{
 		List<PremioSemCartelaDTO> premiosDTO = service.getPremioSorteadosSemGanhadores();
 		
 		return new ResponseEntity<>(premiosDTO, HttpStatus.OK);
