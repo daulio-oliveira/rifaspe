@@ -23,13 +23,8 @@ public class PremioService {
 	
 	@Autowired private PremioRepository premioRepository;
 	
-	public List<PremioDTO> findAllPremios() throws ApiException{
-		List<Premio> premios = premioRepository.findAll();
-		
-		if(premios.size() == 0) {
-			throw new ApiException(HttpStatus.BAD_REQUEST, "Nenhum prêmio encontrado!"); 
-		}
-		
+	public List<PremioDTO> findAllPremios(){
+		List<Premio> premios = premioRepository.findAll();	
 		List<PremioDTO> premiosDTO = new ArrayList<PremioDTO>();
 		for (Premio premio : premios) {
 			premiosDTO.add(new PremioDTO(premio));
@@ -69,12 +64,8 @@ public class PremioService {
 		return numeros;
 	}
 	
-	public List<PremioSemCartelaDTO> getPremiosComGanhadores() throws ApiException{
+	public List<PremioSemCartelaDTO> getPremiosComGanhadores(){
 		List<Premio> premioComGanhadores = premioRepository.findByCpfGanhadorIsNotNull();
-		
-		if(premioComGanhadores.size() == 0) {
-			throw new ApiException(HttpStatus.BAD_REQUEST, "Nenhum prêmio com ganhador foi encontrado!"); 
-		}
 		
 		List<PremioSemCartelaDTO> ganhadores =  new ArrayList<PremioSemCartelaDTO>();
 		for (Premio premio : premioComGanhadores) {
@@ -84,13 +75,9 @@ public class PremioService {
 		return ganhadores;
 	}
 	
-	public List<PremioSemCartelaDTO> getPremioSorteadosSemGanhadores() throws ApiException{
+	public List<PremioSemCartelaDTO> getPremioSorteadosSemGanhadores(){
 		List<Premio> premioSemGanhadores = premioRepository.findByNumeroSorteadoIsNotNullAndCpfGanhadorIsNull();
-		
-		if(premioSemGanhadores.size() == 0) {
-			throw new ApiException(HttpStatus.BAD_REQUEST, "Nenhum prêmio sorteado sem ganhador foi encontrado!"); 
-		}
-		
+
 		List<PremioSemCartelaDTO> premios =  new ArrayList<PremioSemCartelaDTO>();
 		for (Premio premio : premioSemGanhadores) {
 			premios.add(new PremioSemCartelaDTO(premio));

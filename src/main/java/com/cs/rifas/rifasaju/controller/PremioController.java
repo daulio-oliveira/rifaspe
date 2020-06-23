@@ -39,7 +39,7 @@ public class PremioController {
 	
 	//Lista todos os prêmios
 	@GetMapping(produces = { MediaType.APPLICATION_JSON_VALUE })
-	public ResponseEntity<List<PremioDTO>> getListarTodos() throws ApiException{
+	public ResponseEntity<List<PremioDTO>> getListarTodos() {
 		List<PremioDTO> premiosDTO = service.findAllPremios();
 		
 		return new ResponseEntity<>(premiosDTO, HttpStatus.OK);
@@ -55,7 +55,7 @@ public class PremioController {
 	
 	//Lista todos os prêmios que tem ganhadores
 	@GetMapping(value = "/premiosComGanhadores", produces = { MediaType.APPLICATION_JSON_VALUE })
-	public ResponseEntity<List<PremioSemCartelaDTO>> getListarPremiosComGanhadores() throws ApiException{
+	public ResponseEntity<List<PremioSemCartelaDTO>> getListarPremiosComGanhadores() {
 		List<PremioSemCartelaDTO> premiosDTO = service.getPremiosComGanhadores();
 		
 		return new ResponseEntity<>(premiosDTO, HttpStatus.OK);
@@ -63,7 +63,7 @@ public class PremioController {
 	
 	//Lista prêmios com números soteados sem ganhadores
 	@GetMapping(value = "/premiosSemGanhadores", produces = { MediaType.APPLICATION_JSON_VALUE })
-	public ResponseEntity<List<PremioSemCartelaDTO>> getPremioSorteadosSemGanhadores() throws ApiException{
+	public ResponseEntity<List<PremioSemCartelaDTO>> getPremioSorteadosSemGanhadores() {
 		List<PremioSemCartelaDTO> premiosDTO = service.getPremioSorteadosSemGanhadores();
 		
 		return new ResponseEntity<>(premiosDTO, HttpStatus.OK);
