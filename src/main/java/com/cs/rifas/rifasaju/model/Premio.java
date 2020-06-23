@@ -41,7 +41,7 @@ public class Premio {
 	
 	private Double valor;
 	
-	@OneToMany(mappedBy = "numero", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "premio", fetch = FetchType.EAGER)
 	private List<Numeros> numeros;
 	
 	private String numeroSorteado;
