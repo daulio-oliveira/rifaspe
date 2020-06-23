@@ -1,4 +1,4 @@
-package com.pe.rifa.rifape.service;
+package com.cs.rifas.rifasaju.service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,14 +8,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
-import com.pe.rifa.rifape.dto.CompradorDTO;
-import com.pe.rifa.rifape.dto.NumerosDTO;
-import com.pe.rifa.rifape.dto.PremioDTO;
-import com.pe.rifa.rifape.dto.PremioSemCartelaDTO;
-import com.pe.rifa.rifape.exception.ApiException;
-import com.pe.rifa.rifape.model.Premio;
-import com.pe.rifa.rifape.model.enums.TipoStatus;
-import com.pe.rifa.rifape.repository.PremioRepository;
+import com.cs.rifas.rifasaju.dto.CompradorDTO;
+import com.cs.rifas.rifasaju.dto.NumerosDTO;
+import com.cs.rifas.rifasaju.dto.PremioDTO;
+import com.cs.rifas.rifasaju.dto.PremioSemCartelaDTO;
+import com.cs.rifas.rifasaju.exception.ApiException;
+import com.cs.rifas.rifasaju.model.Premio;
+import com.cs.rifas.rifasaju.model.enums.TipoStatus;
+import com.cs.rifas.rifasaju.repository.PremioRepository;
 
 
 @Service

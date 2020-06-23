@@ -1,4 +1,4 @@
-package com.pe.rifa.rifape.model;
+package com.cs.rifas.rifasaju.model;
 
 import java.util.Date;
 import java.util.List;
